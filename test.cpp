@@ -50,7 +50,7 @@ static void setupRuntimeCheckHandling()
   for (const auto reportType : {_CRT_WARN, _CRT_ERROR, _CRT_ASSERT})
   {
     _CrtSetReportMode(reportType, _CRTDBG_MODE_FILE);
-    _CrtSetReportFile(reportType, _CRTDBG_FILE_STDOUT);
+    _CrtSetReportFile(reportType, _CRTDBG_FILE_STDERR);
   }
 
   // Let the program fail on runtime check issues
