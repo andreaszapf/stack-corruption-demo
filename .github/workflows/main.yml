@@ -17,4 +17,4 @@ jobs:
         # reduced to the minimum needed to produce the failure.
         run: |
           cl /Zi /RTC1 /MDd /std:c++17 test.cpp
-          test
+          dir
