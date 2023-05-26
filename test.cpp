@@ -28,7 +28,7 @@ int main()
 {
   setupRuntimeCheckHandling();
 
-  //test();
+  test();
 
   return exitCode;
 }
@@ -50,7 +50,7 @@ static void setupRuntimeCheckHandling()
   for (const auto reportType : {_CRT_WARN, _CRT_ERROR, _CRT_ASSERT})
   {
     _CrtSetReportMode(reportType, _CRTDBG_MODE_FILE);
-    _CrtSetReportFile(reportType, _CRTDBG_FILE_STDERR);
+    _CrtSetReportFile(reportType, _CRTDBG_FILE_STDOUT);
   }
 
   // Let the program fail on runtime check issues
