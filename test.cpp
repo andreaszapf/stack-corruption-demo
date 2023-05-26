@@ -9,12 +9,12 @@ template <typename... Ts> Overload(Ts...) -> Overload<Ts...>;
 static void test()
 {
   const auto func = Overload{
-    // [](int) { return 1; },
-    [](double, bool) { return 3.0; },
+    [](int) { return 1; },
+    // [](double, bool) { return 3.0; },
   };
 
-  // assert(func(0) == 1);
-  assert(func(0.0, false) == 3.0);
+  assert(func(0) == 1);
+  // assert(func(0.0, false) == 3.0);
 
   // Uncomment the following line in to provoke the failure on any compiler version
   // *((char*)(&func) - 1) = 1;
