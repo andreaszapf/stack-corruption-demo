@@ -1,4 +1,5 @@
 #include <cassert>
+#include <tuple>
 
 // Struct and CTAD guide implementing the overload pattern
 // https://www.cppstories.com/2019/02/2lines3featuresoverload.html/
@@ -8,13 +9,18 @@ template <typename... Ts> Overload(Ts...) -> Overload<Ts...>;
 // Simulates a unit test for that pattern
 static void test()
 {
-  const auto func = Overload{
-    [](int) { return 1; },
-    [](double, bool) { return 3.0; },
-  };
+  const auto& [a1, func, a2] = std::make_tuple(
+    std::array<char, 256>{{}},
+    Overload{
+      [](int) { return 1; },
+      [](double, bool) { return 3.0; },
+    },
+    std::array<char, 256>{{}});
 
+  assert(a1 == a2);
   assert(func(0) == 1);
   assert(func(0.0, false) == 3.0);
+  assert(a1 == a2);
 
   // Uncomment the following line in to provoke the failure on any compiler version
   // *((char*)(&func) - 1) = 1;
