@@ -26,7 +26,7 @@ static int exitCode = 0;
 // Main
 int main()
 {
-  //setupRuntimeCheckHandling();
+  setupRuntimeCheckHandling();
 
   //test();
 
